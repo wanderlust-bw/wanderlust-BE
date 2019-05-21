@@ -4,37 +4,37 @@ module.exports = {
   development: {
     client: "sqlite3",
     connection: {
-      filename: "./data-base/wander-lust.db3"
+      filename: "./data/wanderlust.db3"
     },
     useNullAsDefault: true,
     migrations: {
-      directory: "./data-base/migrations"
+      directory: "./data/migrations"
     },
     seeds: {
-      directory: "./data-base/seeds"
+      directory: "./data/seeds"
     }
   },
   testing: {
     client: "sqlite3",
     connection: {
-      filename: "./data-base/test.db3"
+      filename: "./data/test.db3"
     },
     useNullAsDefault: true,
     migrations: {
-      directory: "./data-base/migrations"
+      directory: "./data/migrations"
     },
     seeds: {
-      directory: "./data-base/seeds"
+      directory: "./data/seeds"
     }
   },
   production: {
     client: "pg",
     connection: process.env.DATABASE_URL,
     migrations: {
-      directory: "./data-base/migrations"
+      directory: "./data/migrations"
     },
     seeds: {
-      directory: "./data-base/seeds"
+      directory: "./data/seeds"
     }
   }
 };
