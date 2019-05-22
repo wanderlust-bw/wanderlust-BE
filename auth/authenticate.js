@@ -15,10 +15,7 @@ function authenticate(req, res, next) {
   const token = req.get("Authorization");
 
   if (token) {
-    console.log("token", token);
     jwt.verify(token, jwtKey, (err, decoded) => {
-      console.log("err", err);
-      console.log("secrets", jwtKey);
       if (err) return res.status(401).json(err);
 
       req.decoded = decoded;
