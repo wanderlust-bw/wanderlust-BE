@@ -12,8 +12,8 @@ module.exports = {
 
 // implementation details
 function authenticate(req, res, next) {
-  // const token = req.get("Authorization");
-  const token = req.body.token;
+  const token = req.get("Authorization");
+  // const token = req.body.token;
   if (token) {
     jwt.verify(token, jwtKey, (err, decoded) => {
       if (err) return res.status(401).json(err);
