@@ -19,7 +19,11 @@ module.exports = tableName => {
         );
     },
     getBy: user => {
-      return Db(tableName).where(user);
+      console.log("model", user);
+      console.log(Db(tableName).where(user));
+      return Db(tableName)
+        .where(user)
+        .first();
     },
     edit: (id, changes) => {
       return Db(tableName)

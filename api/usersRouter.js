@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
-const Users = require("../helpers/universalModel")("user");
+const Users = require("../helpers/universalModel")("users");
 const jwt = require("jsonwebtoken");
 const secrets = require("../config/secrets.js");
 
@@ -26,9 +26,10 @@ router.post("/login", (req, res) => {
 
   console.log(req.body);
   Users.getBy({ username })
-    .first()
+    // .first()
     .then(user => {
-      console.log(user.username, user.password);
+      console.log("user", user);
+      // console.log(user.username, user.password);
       if (user && bcrypt.compareSync(password, user.password)) {
         console.log("user", user);
         const token = generateToken(user);

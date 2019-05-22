@@ -3,7 +3,7 @@ const Users = require("../helpers/universalModel")("tour");
 
 const { authenticate } = require("../auth/authenticate");
 
-router.get("/trip", authenticate, (req, res) => {
+router.get("/trip", (req, res) => {
   Users.get()
     .then(users => {
       res.json(users);
