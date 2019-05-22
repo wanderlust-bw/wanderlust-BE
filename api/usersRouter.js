@@ -35,7 +35,8 @@ router.post("/login", (req, res) => {
         const token = generateToken(user);
 
         res.status(200).json({
-          message: `welcome ${username}, ${token}`
+          userType: user.userType,
+          token: token
         });
       } else {
         res.status(401).json({ message: "invalid credentials" });

@@ -9,7 +9,7 @@ const server = express();
 
 server.use(express.json());
 server.use(helmet());
-server.use(morgan());
+server.use(morgan("dev"));
 server.use(cors());
 
 server.use("/user", userRouter);
