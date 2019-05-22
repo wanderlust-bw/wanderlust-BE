@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const Users = require("../helpers/universalModel")("tour");
+const Users = require("../helpers/universalModel")("trips");
 
 const { authenticate } = require("../auth/authenticate");
 
-router.get("/trip", (req, res) => {
+router.get("/trip", authenticate, (req, res) => {
   Users.get()
     .then(users => {
       res.json(users);

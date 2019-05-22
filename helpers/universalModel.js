@@ -19,8 +19,8 @@ module.exports = tableName => {
         );
     },
     getBy: user => {
-      console.log("model", user);
-      console.log(Db(tableName).where(user));
+      // console.log("model", user);
+      // console.log(Db(tableName).where(user));
       return Db(tableName)
         .where(user)
         .first();
