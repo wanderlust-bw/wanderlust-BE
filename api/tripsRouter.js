@@ -47,7 +47,14 @@ router.delete("/trip/:id", authenticate, async (req, res) => {
   try {
     const { id } = req.params;
     const experience = await Trips.remove(id);
-    return res.status(200).json({ msg: "delete success", experience });
+    const trips = await Trips.get("trips")
+      .then(trips => {
+        res.json(trips);
+      })
+      .catch(err => {
+        res.status(500).json(err);
+      });
+    return res.status(200).json(trips);
   } catch (err) {
     return errorHandler(err, res);
   }
@@ -61,4 +68,5 @@ router.get("/trip/:id/profile", authenticate, async (req, res) => {
     return errorHandler(err, res);
   }
 });
+
 module.exports = router;
