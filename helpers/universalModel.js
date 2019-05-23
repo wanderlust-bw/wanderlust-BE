@@ -18,6 +18,10 @@ module.exports = tableName => {
             .first()
         );
     },
+    getUserPosts: id => {
+      return Db(tableName).where({ user_id: id });
+    },
+
     getBy: user => {
       // console.log("model", user);
       // console.log(Db(tableName).where(user));

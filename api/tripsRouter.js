@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const Trips = require("../helpers/universalModel")("trips");
-
 const { authenticate } = require("../auth/authenticate");
 
 function errorHandler(err, res) {
@@ -49,6 +48,15 @@ router.delete("/trip/:id", authenticate, async (req, res) => {
     const { id } = req.params;
     const experience = await Trips.remove(id);
     return res.status(200).json({ msg: "delete success", experience });
+  } catch (err) {
+    return errorHandler(err, res);
+  }
+});
+router.get("/trip/:id/profile", authenticate, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const post = await Trips.getUserPosts(id);
+    return res.status(200).json(post);
   } catch (err) {
     return errorHandler(err, res);
   }
