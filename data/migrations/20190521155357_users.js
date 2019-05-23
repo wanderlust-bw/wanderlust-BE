@@ -21,6 +21,8 @@ exports.up = function(knex, Promise) {
       tbl.string("title", 128).notNullable();
       tbl.string("description").notNullable();
       tbl.string("location", 128).notNullable();
+      tbl.integer("duration").notNullable();
+      tbl.string("tourType", 128).notNullable();
       tbl.timestamps(true, true);
       tbl
         .integer("user_id")
