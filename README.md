@@ -35,7 +35,9 @@ Supertest
 
 - user/register -> post ->name, username, password, userType -> string
 - user/login -> post -> username, password -> string
-- user/trip -> post -> title,description,location -> string
-- user/trip -> get -> id,title,description,location,timestamps,user_id
-- user/trip/:id -> update
-- user/trip/:id -> delete
+- api/trip -> post -> title,description,location -> string
+- api/trip/:id -> get -> get trip by trip_id
+- api/trip -> get -> id,title,description,location,timestamps,user_id
+- api/trip/:id -> update
+- api/trip/:id -> delete
+- api/trip/:id/profile -> get by user_id, the user_trip

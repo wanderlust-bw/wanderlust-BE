@@ -31,4 +31,12 @@ describe("get /", () => {
         done();
       });
   });
+  it("should return {api: 'is up and running after a short break'}", () => {
+    const expected = { api: "is up and running after a short break" };
+    request(server)
+      .get("/")
+      .then(res => {
+        expect(res.body).toEqual(expected);
+      });
+  });
 });
