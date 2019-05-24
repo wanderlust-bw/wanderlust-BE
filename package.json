@@ -21,7 +21,9 @@
   "homepage": "https://github.com/wanderlust-bw/wanderlust-BE#readme",
   "devDependencies": {
     "cross-env": "^5.2.0",
-    "nodemon": "^1.19.0"
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.0",
+    "supertest": "^4.0.2"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -36,5 +38,8 @@
     "morgan": "^1.9.1",
     "pg": "^7.11.0",
     "sqlite3": "^4.0.8"
+  },
+  "jest": {
+    "devEnvironment": "node"
   }
 }

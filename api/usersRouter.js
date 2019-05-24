@@ -4,6 +4,10 @@ const Users = require("../helpers/universalModel")("users");
 const jwt = require("jsonwebtoken");
 const secrets = require("../config/secrets.js");
 
+function errorHandler(err, res) {
+  res.status(500).json({ msg: `error retrieving the data`, err });
+}
+
 router.post("/register", (req, res) => {
   let user = req.body;
   const hash = bcrypt.hashSync(user.password, 14);
@@ -39,6 +43,16 @@ router.post("/login", (req, res) => {
       // console.log(err);
       res.status(500).json(err.message);
     });
+});
+
+router.get("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await Users.getById(id);
+    return res.status(200).json(user);
+  } catch (err) {
+    return errorHandler(err, res);
+  }
 });
 
 function generateToken(user) {

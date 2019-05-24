@@ -38,7 +38,14 @@ router.put("/trip/:id", authenticate, async (req, res) => {
     const { id } = req.params;
     const changes = req.body;
     const experience = await Trips.edit(id, changes);
-    return res.status(200).json({ msg: "update success", experience });
+    const trips = await Trips.get("trips")
+      .then(trips => {
+        res.json(trips);
+      })
+      .catch(err => {
+        res.status(500).json(err);
+      });
+    return res.status(200).json(trips);
   } catch (err) {
     return errorHandler(err, res);
   }
