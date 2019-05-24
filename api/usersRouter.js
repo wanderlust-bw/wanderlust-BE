@@ -4,6 +4,8 @@ const Users = require("../helpers/universalModel")("users");
 const jwt = require("jsonwebtoken");
 const secrets = require("../config/secrets.js");
 
+const { authenticate } = require("../auth/authenticate");
+
 function errorHandler(err, res) {
   res.status(500).json({ msg: `error retrieving the data`, err });
 }
@@ -45,7 +47,7 @@ router.post("/login", (req, res) => {
     });
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", authenticate, async (req, res) => {
   try {
     const { id } = req.params;
     const user = await Users.getById(id);
