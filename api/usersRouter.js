@@ -48,6 +48,7 @@ router.post("/login", (req, res) => {
 });
 
 router.get("/:id", authenticate, async (req, res) => {
+  // console.log("i am here");
   try {
     const { id } = req.params;
     const user = await Users.getById(id);

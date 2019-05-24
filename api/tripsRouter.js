@@ -7,6 +7,7 @@ function errorHandler(err, res) {
 }
 
 router.get("/trip", authenticate, (req, res) => {
+  // console.log("trips", trips);
   Trips.get("trips")
     .then(trips => {
       res.json(trips);

@@ -13,7 +13,7 @@ server.use(morgan("dev"));
 server.use(cors());
 
 server.use("/user", userRouter);
-server.use("/user", guideRouter);
+server.use("/api", guideRouter);
 
 server.get("/", async (req, res) => {
   res.status(200).json({ api: "is up and running after a short break" });
